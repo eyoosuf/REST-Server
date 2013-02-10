@@ -4,12 +4,15 @@ RestServer::Application.routes.draw do
   resources :lists
 
 
-  namespace :api, defaults: {format: 'json'} do 
+  root :to => "lists#index"
+
+
+  namespace :api, defaults: {format: 'json'} do
 
     scope module: :v1, constraints: ApiConstraints.new(version: 1, default: true) do
       resources :lists
     end
-    
+
   end
 
 
